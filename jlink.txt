@@ -1,0 +1,49 @@
+$ ./jdk-11/bin/jlink --add-modules java.base,java.logging --output custom-runtime
+$ du -sh custom-runtime
+50M	custom-runtime/
+$ ./custom-runtime/bin/java --list-modules
+java.base@11.0.10
+java.logging@11.0.10
+
+
+jlink --no-header-files --no-man-pages --add-modules java.base,java.datatransfer,java.desktop,java.logging,java.management,java.naming,java.rmi,java.scripting,java.sql,java.transaction.xa,java.xml,jdk.crypto.ec,jdk.jsobject,jdk.xml.dom --output my-runtime2
+
+jdeps
+Valley.jar -> java.base
+Valley.jar -> java.desktop
+Valley.jar -> java.logging
+Valley.jar -> java.sql
+   interfaces                                         -> java.io                                            java.base
+   interfaces                                         -> java.lang                                          java.base
+   interfaces                                         -> java.net                                           java.base
+   interfaces                                         -> java.sql                                           java.sql
+   interfaces                                         -> java.util                                          java.base
+   models                                             -> java.io                                            java.base
+   models                                             -> java.lang                                          java.base
+   models                                             -> java.lang.invoke                                   java.base
+   mtester                                            -> interfaces                                         Valley.jar
+   mtester                                            -> java.awt                                           java.desktop
+   mtester                                            -> java.io                                            java.base
+   mtester                                            -> java.lang                                          java.base
+   mtester                                            -> java.lang.invoke                                   java.base
+   mtester                                            -> java.net                                           java.base
+   mtester                                            -> java.nio.file                                      java.base
+   mtester                                            -> java.sql                                           java.sql
+   mtester                                            -> java.util                                          java.base
+   mtester                                            -> java.util.logging                                  java.logging
+   mtester                                            -> models                                             Valley.jar
+   ui                                                 -> interfaces                                         Valley.jar
+   ui                                                 -> java.awt                                           java.desktop
+   ui                                                 -> java.awt.event                                     java.desktop
+   ui                                                 -> java.io                                            java.base
+   ui                                                 -> java.lang                                          java.base
+   ui                                                 -> java.lang.invoke                                   java.base
+   ui                                                 -> java.net                                           java.base
+   ui                                                 -> java.sql                                           java.sql
+   ui                                                 -> java.util                                          java.base
+   ui                                                 -> java.util.logging                                  java.logging
+   ui                                                 -> javax.swing                                        java.desktop
+   ui                                                 -> javax.swing.border                                 java.desktop
+   ui                                                 -> javax.swing.table                                  java.desktop
+   ui                                                 -> models                                             Valley.jar
+   ui                                                 -> mtester                                            Valley.jar

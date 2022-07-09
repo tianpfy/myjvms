@@ -1,0 +1,39 @@
+jpackage create-image -i inputdir -o outputdir -n AppName \
+-c package.ClassName -j MyJar.jar
+
+jpackage create-installer -i inputdir -o outputdir \
+-n -c package ClassName -i MyJar.jar
+
+
+jpackage create-installer --runtime-installer \
+    -n  -o outputdir --runtime-image 
+
+
+    # input dir is where the main jar resides (`target/` typically with Maven projects)
+# main jar path should be relative to the input dir
+# main class is the executable class with a main() method
+jpackage -i ./target/ --main-class com.devdungeon.Main --main-jar myapp.jar
+output is an .exe file which will install app
+
+# Add app to start menu
+--win-menu
+
+# Create desktop shortcut
+--win-shortcut
+
+Suppose you have an application composed of JAR files, all in a directory named
+lib, and that lib/main.jar contains the main class. Then the command
+$ jpackage --name myapp --input lib --main-jar main.jar
+will package the application in the local system's default format, leaving the
+resulting package file in the current directory. If the MANIFEST.MF file in main.jar does not have a Main-Class attribute then you must specify the main class explicitly:
+
+$ jpackage --name myapp --input lib --main-jar main.jar  --main-class myapp.Main
+
+The name of the package will be myapp, though the name of the package file itself will be longer, and end with the package type (e.g., myapp.exe). The package wil include a launcher for the application, also called myapp. To start the application,the launcher will place every JAR
+
+
+jlink --no-header-files --no-man-pages --add-modules java.datatransfer,java.desktop,java.logging,java.management,java.naming,java.rmi,java.scripting,java.sql,java.transaction.xa,java.xml,jdk.jsobject, java.security,jdk.unsupported,jdk.unsupported.desktop,jdk.xml.dom --output java-runtime2
+
+jdeps Valley.jar
+
+
